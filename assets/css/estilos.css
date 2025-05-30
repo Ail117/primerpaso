@@ -1,1 +1,105 @@
+/* Header */
+.header {
+    padding: 16px 0;
+    position: relative;
+    z-index: 100;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-link {
+    color: #CBD5E0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #FFFFFF;
+    background: rgba(183, 148, 246, 0.1);
+}
+
+.nav-link.active {
+    color: #FFFFFF;
+    background: #B794F6;
+}
+
+/* Auth buttons */
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-login {
+    background: transparent;
+    color: #CBD5E0;
+    border: 2px solid #4A5568;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    color: #FFFFFF;
+    border-color: #B794F6;
+    background: rgba(183, 148, 246, 0.1);
+}
+
+.btn-register {
+    background: #B794F6;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background: #9F7AEA;
+    transform: translateY(-2px);
+}
+
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
