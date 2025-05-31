@@ -53,7 +53,7 @@
             </div>
         </header>
 
-        <form id="registrationForm" novalidate><!-- CORREGIDO: añadido 'novalidate' para usar validaciones personalizadas -->
+        <form method="POST" action="conexion/conexion.php"><!-- CORREGIDO: añadido 'novalidate' para usar validaciones personalizadas -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="nombres">Nombres</label>
@@ -104,7 +104,7 @@
                 </div>
             </fieldset>
 
-            <button type="submit" class="submit-btn">Crear cuenta</button>
+            <button type="submit" class="submit-btn" name="registrar">Crear cuenta</button>
         </form>
 
         <div class="login-link">
@@ -119,6 +119,7 @@
                 <button type="button" class="social-btn" onclick="loginWith('outlook')">Outlook</button><!-- CORREGIDO -->
             </div>
         </div>
+       
     </main>
 
     <footer class="footer-links"><!-- CORREGIDO: <div> cambiado por <footer> -->
@@ -130,6 +131,7 @@
         <a href="#">FAQ</a>
         <a href="#">Contacto</a>
         <a href="#">Mapa del Sitio</a>
+        
     </footer>
 
     <script>
