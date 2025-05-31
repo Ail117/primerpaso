@@ -1,14 +1,18 @@
 <?php
 $page = $_GET['page'] ?? 'home';
-$path = "views/$page.php";
 
-include 'includes/header.php';
-include 'includes/navbar.php';
-
-if (file_exists($path)) {
-    include $path;
-} else {
-    echo "<h2>Página no encontrada</h2>";
+switch ($page) {
+  case 'home':
+    include 'views/home.php';
+    break;
+  case 'login':
+    include 'views/login.php';
+    break;
+  case 'registro':
+    include 'views/registro.php';
+    break;
+  // agrega más páginas aquí...
+  default:
+    include 'views/404.php';
+    break;
 }
-
-include 'includes/footer.php';
