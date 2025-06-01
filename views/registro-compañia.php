@@ -54,7 +54,7 @@
                 </div>
         </header>
 
-        <form method="POST" action="conexion/conexion_empresa.php" id="companyRegistrationForm">
+        <form method="POST" action="conexion/conexion_empresa.php">
             <div class="form-row">
                 <div class="form-group">
                     <label for="correo">Correo electrónico</label>

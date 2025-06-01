@@ -1,16 +1,15 @@
 <?php
-// conexion/conexion.php
+
 $conection = mysqli_connect("localhost", "root", "", "primerospasosbd");
 
 if (!$conection) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 
-if (isset($_POST['registrar'])) {
+if (isset($_POST['registrar_empresa'])) {
     // Verificar que los campos no estén vacíos
-    if (empty($_POST['nombres']) || 
-        empty($_POST['apellidos']) || 
-        empty($_POST['email']) || 
+    if (empty($_POST['correo']) || 
+        empty($_POST['nombre_comercial']) ||        
         empty($_POST['password'])) {
         
         echo "<p style='color: red;'>❌ Por favor completa todos los campos requeridos</p>";
@@ -19,17 +18,18 @@ if (isset($_POST['registrar'])) {
         echo "<p style='color: red;'>❌ Las contraseñas no coinciden</p>";
     }
     else {
-        $nombre = trim($_POST['nombres']);
-        $apellidos = trim($_POST['apellidos']);
-        $email = trim($_POST['email']);
+        $nombre = trim($_POST['nombre_comercial']);       
+        $email = trim($_POST['correo']);
         $password = trim($_POST['password']);
         $telefono = trim($_POST['telefono']);
-        $profesion = trim($_POST['profesion']);
-        $tipo_cuenta = 'usuario'
+        $pais = trim($_POST['pais']);
+        $ciudad = trim($_POST['ciudad']);
+        $trabajadores = trim($_POST['numero_trabajadores']);
+        $tipo_cuenta = 'empresa'
         
         // CORREGIDO: usar mysqli_query, no mysqli_connect
-        $consulta = "INSERT INTO usuarios (nombre, apellido, email, contraseña, telefono, profesion) 
-                     VALUES ('$nombre', '$apellidos', '$email', '$password', '$telefono', '$profesion')";
+        $consulta = "INSERT INTO empresas (email, nombre_comercial, numero_trabajadores, telefono, pais, ciudad, contraseña) 
+                     VALUES ('$email', '$nombre', '$trabajadores', '$telefono', '$pais', '$ciudad', '$password')";
         
         $resultado = mysqli_query($conection, $consulta);
         
@@ -40,4 +40,5 @@ if (isset($_POST['registrar'])) {
         }
     }
 }
+
 ?>
