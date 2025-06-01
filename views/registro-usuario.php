@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
     <link rel="stylesheet" href="./assets/css/estilos_registro.css">
-    <link rel="stylesheet" href="./assets/css/estilos.css">
+    
 </head>
 
 <body>
@@ -48,8 +48,8 @@
         <header class="header">
             <h1>Registrarse</h1>
             <div class="user-type">
-                <button type="button" class="user-type-btn active" onclick="toggleUserType('empleador')">Busco empleo</button><!-- CORREGIDO: añadido type="button" -->
-                <button type="button" class="user-type-btn" onclick="toggleUserType('empleado')">Soy empleador</button><!-- CORREGIDO -->
+                <button type="button" class="user-type-btn active" onclick="toggleUserType('empleado')">Busco empleo</button>
+                <button type="button" class="user-type-btn" onclick="toggleUserType('empleador')">Soy empleador</button>
             </div>
         </header>
 
@@ -140,9 +140,11 @@
             buttons.forEach(btn => btn.classList.remove('active'));
 
             if (type === 'empleador') {
-                buttons[0].classList.add('active');
-            } else {
                 buttons[1].classList.add('active');
+                // Usar el sistema de parámetros de tu proyecto
+                window.location.href = '?page=registro-compañia';
+            } else {
+                buttons[0].classList.add('active');
             }
         }
 
