@@ -40,4 +40,5 @@ if (isset($_POST['registrar'])) {
         }
     }
 }
+mysqli_close();
 ?>
