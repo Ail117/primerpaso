@@ -25,7 +25,7 @@ if (isset($_POST['registrar_empresa'])) {
         $pais = trim($_POST['pais']);
         $ciudad = trim($_POST['ciudad']);
         $trabajadores = trim($_POST['numero_trabajadores']);
-        $tipo_cuenta = 'empresa'
+        
         
         // CORREGIDO: usar mysqli_query, no mysqli_connect
         $consulta = "INSERT INTO empresas (email, nombre_comercial, numero_trabajadores, telefono, pais, ciudad, contraseña) 
