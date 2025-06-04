@@ -25,11 +25,10 @@ if (isset($_POST['registrar'])) {
         $password = trim($_POST['password']);
         $telefono = trim($_POST['telefono']);
         $profesion = trim($_POST['profesion']);
-        $tipo_cuenta = 'usuario'
+        
         
         // CORREGIDO: usar mysqli_query, no mysqli_connect
-        $consulta = "INSERT INTO usuarios (nombre, apellido, email, contraseña, telefono, profesion) 
-                     VALUES ('$nombre', '$apellidos', '$email', '$password', '$telefono', '$profesion')";
+        $consulta = "INSERT INTO usuarios (nombre, apellido, email, contraseña, telefono, profesion) VALUES ('$nombre', '$apellidos', '$email', '$password', '$telefono', '$profesion')";
         
         $resultado = mysqli_query($conection, $consulta);
         
