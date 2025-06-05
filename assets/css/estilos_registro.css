@@ -1,0 +1,362 @@
+/* Variables CSS - Paleta de colores */
+:root {
+    --primary-100: #8B5FBF;
+    --primary-200: #bd8df2;
+    --primary-300: #fff1ff;
+    --accent-100: #D946EF;
+    --accent-200: #ffe7ff;
+    --text-100: #ffffff;
+    --text-200: #e0e0e0;
+    --bg-100: #1e293b;
+    --bg-200: #2e394b;
+    --bg-300: #475165;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del cuerpo */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, var(--bg-100) 0%, var(--bg-200) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.container {
+    background: var(--bg-200);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--bg-300);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: var(--primary-200);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Botones de tipo de usuario */
+.user-type {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.user-type-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid var(--bg-300);
+    background: transparent;
+    color: var(--text-200);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.user-type-btn.active {
+    border-color: var(--primary-100);
+    background: var(--primary-100);
+    color: var(--text-100);
+}
+
+.user-type-btn:hover {
+    border-color: var(--primary-200);
+    background: var(--primary-200);
+    color: var(--text-100);
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Labels */
+label {
+    display: block;
+    color: var(--text-100);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    width: 100%;
+    padding: 15px;
+    background: var(--bg-300);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: var(--text-100);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus {
+    outline: none;
+    border-color: var(--primary-200);
+    background: var(--bg-200);
+    box-shadow: 0 0 0 3px rgba(189, 141, 242, 0.1);
+}
+
+input::placeholder {
+    color: var(--text-200);
+    opacity: 0.7;
+}
+
+/* Grupo de checkboxes */
+.checkbox-group {
+    margin: 25px 0;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-top: 2px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-100);
+}
+
+.checkbox-item label {
+    color: var(--text-200);
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Botón de envío */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--primary-100) 0%, var(--accent-100) 100%);
+    border: none;
+    border-radius: 25px;
+    color: var(--text-100);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(139, 95, 191, 0.3);
+}
+
+/* Link de login */
+.login-link {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-link span {
+    color: var(--text-200);
+    font-size: 14px;
+}
+
+.login-link a {
+    color: var(--primary-200);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.login-link a:hover {
+    color: var(--accent-100);
+}
+
+/* Login social */
+.social-login {
+    text-align: center;
+}
+
+.social-login p {
+    color: var(--text-200);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 12px;
+    background: var(--bg-300);
+    border: 2px solid var(--bg-300);
+    border-radius: 10px;
+    color: var(--text-100);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    border-color: var(--primary-200);
+    background: var(--primary-200);
+}
+
+/* Enlaces del footer */
+.footer-links {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: var(--text-200);
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: var(--primary-200);
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+    }
+
+    .footer-links {
+        position: static;
+        transform: none;
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+}
+/* Estilos adicionales para campos select - Agregar al final del archivo estilos_registro.css */
+
+/* Campos select */
+select {
+    width: 100%;
+    padding: 15px;
+    background: var(--bg-300);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: var(--text-100);
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e0e0e0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 45px;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-200);
+    background-color: var(--bg-200);
+    box-shadow: 0 0 0 3px rgba(189, 141, 242, 0.1);
+}
+
+select:hover {
+    border-color: var(--primary-200);
+}
+
+/* Opciones del select */
+select option {
+    background: var(--bg-300);
+    color: var(--text-100);
+    padding: 10px;
+}
+
+select option:hover,
+select option:checked {
+    background: var(--primary-100) !important;
+    color: var(--text-100) !important;
+}
+
+/* Select placeholder estilo */
+select:invalid {
+    color: var(--text-200);
+    opacity: 0.7;
+}
+
+select option[value=""] {
+    color: var(--text-200);
+    opacity: 0.7;
+}
+
+/* Mejoras para select en estados específicos */
+select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--bg-100);
+}
+
+/* Responsividad para selects */
+@media (max-width: 768px) {
+    select {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+}

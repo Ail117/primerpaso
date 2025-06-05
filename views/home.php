@@ -1,3 +1,4 @@
+
 <?php include 'includes/header.php'; ?>
 
 <section class="hero">
@@ -39,3 +40,5 @@
 </section>
 
 <?php include 'includes/footer.php'; ?>
+
+
