@@ -19,19 +19,42 @@ if (isset($_POST['registrar_empresa'])) {
     }
     else {
         $nombre = trim($_POST['nombre_comercial']);       
-        $email = trim($_POST['correo']);
-        $password = trim($_POST['password']);
+        $email = trim(strtolower($_POST['correo']));
+        $password = ($_POST['password']);
         $telefono = trim($_POST['telefono']);
         $pais = trim($_POST['pais']);
         $ciudad = trim($_POST['ciudad']);
         $trabajadores = trim($_POST['numero_trabajadores']);
         
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $consulta_verificar = "SELECT id FROM empresas WHERE email = ?";
         
+        $stmt_verificar = mysqli_prepare($conection, $consulta_verificar);
+
+        if (!$stmt_verificar) {
+            echo "<p style='color: red;'>❌ Error en la preparación de consulta: " . mysqli_error($conection) . "</p>";
+            exit;
+        }
+
+        mysqli_stmt_bind_param($stmt_verificar, "s", $email);
+        mysqli_stmt_execute($stmt_verificar);
+        $resultado_verificar = mysqli_stmt_get_result($stmt_verificar);
+
+        if (mysqli_num_rows($resultado_verificar) > 0) {
+            echo "<p style='color: red;'>❌ Este email ya está registrado</p>";
+            mysqli_stmt_close($stmt_verificar);
+            exit;
+        }
+        mysqli_stmt_close($stmt_verificar);
+
         // CORREGIDO: usar mysqli_query, no mysqli_connect
         $consulta = "INSERT INTO empresas (email, nombre_comercial, numero_trabajadores, telefono, pais, ciudad, contraseña) 
-                     VALUES ('$email', '$nombre', '$trabajadores', '$telefono', '$pais', '$ciudad', '$password')";
+                     VALUES ('$email', '$nombre', '$trabajadores', '$telefono', '$pais', '$ciudad', '$password_hash')";
         
         $resultado = mysqli_query($conection, $consulta);
+
+        
         
         if ($resultado) {
             echo "<p style='color: green;'>✅ Usuario registrado exitosamente</p>";

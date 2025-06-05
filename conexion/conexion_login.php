@@ -16,7 +16,7 @@ if (isset($_POST['iniciar_sesion'])) {
         echo "Complete los campos requeridos";
     } else {
         $correo = trim($_POST['email']);
-        $contraseña = trim($_POST['password']);
+        $contraseña = $_POST['password'];
 
         // MÉTODO 1: Buscar primero en tabla usuarios
         $sql_usuarios = "SELECT * FROM usuarios WHERE email = ? AND contraseña = ?";
@@ -59,7 +59,7 @@ if (isset($_POST['iniciar_sesion'])) {
             session_start();
             $_SESSION['usuario_id'] = $datos_usuario['id']; // Ajusta según tu BD
             
-            $_SESSION['usuario_nombre'] = $datos_usuario['nombre_comercial'];
+            //$_SESSION['usuario_nombre'] = $datos_usuario['nombre_comercial'];
             $_SESSION['tipo_cuenta'] = $datos_usuario['tipo_cuenta'];
             
             //echo "Inicio de sesión exitoso. Bienvenido " . $datos_usuario['nombre'];
@@ -70,6 +70,8 @@ if (isset($_POST['iniciar_sesion'])) {
                 $_SESSION['usuario_nombre'] = $datos_usuario['nombre'];
                 echo "Inicio de sesión exitoso. Bienvenido " . $datos_usuario['nombre'];
                 echo "<br>Redirigiendo al panel de usuario...";
+                echo $contraseña;
+                echo $datos_usuario['contraseña'];
                 // header("Location: panel_usuario.php");
             } else {
                 $_SESSION['usuario_nombre'] = $datos_usuario['nombre_comercial'];
