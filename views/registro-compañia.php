@@ -1,49 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse - Empleador</title>
-    <link rel="stylesheet" href="./assets/css/estilos_registro.css">
-    
-</head>
-
+<?php include "includes/header.php" ; ?>
 <body>
     
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="nav-wrapper">
-                <!-- Logo -->
-                <div class="logo">
-                    <div class="logo-icon">
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                            <circle cx="20" cy="20" r="18" stroke="#B794F6" stroke-width="2"/>
-                            <path d="M12 20L18 26L28 14" stroke="#B794F6" stroke-width="2" fill="none"/>
-                        </svg>
-                    </div>
-                    <span class="logo-text">PrimerPaso</span>
-                </div>
-
-                <!-- Navigation -->
-                <nav class="nav">
-                    <a href="#" class="nav-link active">Inicio</a>
-                    <a href="#" class="nav-link">Empleos</a>
-                    <a href="#" class="nav-link">Recursos</a>
-                    <a href="#" class="nav-link">Para empresas</a>
-                    <a href="#" class="nav-link">Sobre nosotros</a>
-                    <a href="#" class="nav-link">PFFs</a>
-                    <a href="#" class="nav-link">Contacto</a>
-                </nav>
-
-                <!-- Auth buttons -->
-                <div class="auth-buttons">
-                    <button class="btn-login">Ingresar</button>
-                    <button class="btn-register">Registrarse</button>
-                </div>
-            </div>
-        </div>
-    </header>
+    
 
     <main class="container">
         <header class="header">
@@ -155,17 +113,7 @@
        
     </main>
 
-    <footer class="footer-links">
-        <a href="#">Inicio</a>
-        <a href="#">Empleos</a>
-        <a href="#">Recursos</a>
-        <a href="#">Para Empresas</a>
-        <a href="#">Sobre Nosotros</a>
-        <a href="#">FAQ</a>
-        <a href="#">Contacto</a>
-        <a href="#">Mapa del Sitio</a>
-    </footer>
-
+    
     <script>
         function toggleUserType(type) {
             const buttons = document.querySelectorAll('.user-type-btn');
@@ -271,4 +219,4 @@
         });
     </script>
 </body>
-</html>
+<?php include "includes/footer.php" ; ?>

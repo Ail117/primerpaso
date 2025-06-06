@@ -9,7 +9,7 @@ switch ($page) {
     include 'views/login.php';
     break;
   case 'registro':
-    include 'views/registro.php';
+    include 'views/registro-usuario.php';
     break;
   // agrega más páginas aquí...
   default:

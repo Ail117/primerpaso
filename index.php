@@ -8,7 +8,7 @@
 $page = $_GET['page'] ?? 'home';
 
 // Lista de vistas válidas
-$allowed_pages = ['home', 'empleos', 'recursos', 'para-empresas', 'sobre-nosotros', 'contacto', 'login', 'registro'];
+$allowed_pages = ['home', 'empleos', 'recursos', 'para-empresas', 'sobre-nosotros', 'contacto', 'login', 'registro-usuario'];
 
 // Si no es una vista válida, mostrar home
 if (!in_array($page, $allowed_pages)) {
