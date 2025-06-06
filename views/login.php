@@ -33,14 +33,8 @@ function validateLogin($email, $password) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="./assets/css/estilo_login.css">
-</head>
+<?php include 'includes/header.php' ; ?>
+
 <body>
     <div class="login-container">
         <h1 class="title">Iniciar Sesión</h1>
@@ -109,4 +103,4 @@ function validateLogin($email, $password) {
 
     <script src="script_login.js"></script>
 </body>
-</html>
+<?php include 'includes/footer.php' ; ?>

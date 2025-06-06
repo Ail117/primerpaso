@@ -16,7 +16,7 @@
       </div>
       <div class="nav-buttons">
         <a href="?page=login"><button class="btn btn-outline">Iniciar Sesión</button></a>
-        <a href="?page=registro"><button class="btn btn-primary">Registrarse</button></a>
+        <a href="?page=registro-compañia"><button class="btn btn-primary">Registrarse</button></a>
       </div>
     </nav>
   </div>
