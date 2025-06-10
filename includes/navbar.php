@@ -9,7 +9,7 @@
         <a href="?page=home" class="active">Inicio</a>
         <a href="?page=oportunidades">Oportunidades</a>
         <a href="?page=recursos">Recursos</a>
-        <a href="?page=para-empresas">Para Empresas</a>
+        <a href="?page=post-trab">Para Empresas</a>
         <a href="?page=sobre-nosotros">Sobre Nosotros</a>
         <a href="?page=faq">PFFs</a>
         <a href="?page=contacto">Contacto</a>

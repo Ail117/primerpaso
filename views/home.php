@@ -6,7 +6,7 @@
     <div class="hero-content">
       <h1>Conecta con <span>oportunidades</span> que impulsen tu carrera</h1>
       <p>Plataforma especializada en ayudar a estudiantes y recién egresados a encontrar prácticas profesionales, becas y empleos de nivel inicial.</p>
-      <button class="btn btn-primary">Explora Oportunidades</button>
+      <a class="btn btn-primary" href="?page=post-trab">Explora Oportunidades</a>
     </div>
     <div class="hero-image">
       <img src="assets/imagenes/jovenes.jpg" alt="buscando chamba" class="hero-img">

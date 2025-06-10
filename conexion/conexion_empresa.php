@@ -63,5 +63,5 @@ if (isset($_POST['registrar_empresa'])) {
         }
     }
 }
-mysqli_close();
+mysqli_close($conection);
 ?>

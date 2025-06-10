@@ -1,7 +1,7 @@
 <?php include "includes/header.php"; ?>
-
-    <main class="container"><!-- CORREGIDO: <div> cambiado por <main> por semántica -->
-        <header class="header">
+     
+    <main class="registro-container"><!-- CORREGIDO: <div> cambiado por <main> por semántica -->
+        <header class="registrarse_header">
             <h1>Registrarse</h1>
             <div class="user-type">
                 <button type="button" class="user-type-btn active" onclick="toggleUserType('empleado')">Busco empleo</button>
@@ -9,7 +9,7 @@
             </div>
         </header>
 
-        <form method="POST" action="conexion/conexion.php"><!-- CORREGIDO: añadido 'novalidate' para usar validaciones personalizadas -->
+        <form method="POST" action="conexion/conexion.php">
             <div class="form-row">
                 <div class="form-group">
                     <label for="nombres">Nombres</label>

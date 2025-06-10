@@ -1,9 +1,9 @@
 <?php include "includes/header.php" ; ?>
-<body>
+
     
     
 
-    <main class="container">
+    <main class="registro-container">
         <header class="header">
             <h1>Registrarse</h1>
                 <div class="user-type">

@@ -8,8 +8,14 @@ switch ($page) {
   case 'login':
     include 'views/login.php';
     break;
-  case 'registro':
+  case 'registro-usuario':
     include 'views/registro-usuario.php';
+    break;
+  case 'registro-compañia':
+    include 'views/registro-compañia.php';
+    break;
+  case 'post-trab':
+    include 'views/post-trab.php';
     break;
   // agrega más páginas aquí...
   default:

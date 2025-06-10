@@ -59,5 +59,5 @@ if (isset($_POST['registrar'])) {
         }
     }
 }
-mysqli_close();
+mysqli_close($conection);
 ?>

@@ -16,7 +16,9 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ========== HEADER / NAVBAR ========== */
@@ -25,7 +27,7 @@ header {
   top: 0;
   z-index: 999;
   background-color: #1a2238;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
 }
 
 .navbar {
@@ -114,6 +116,7 @@ header {
 .btn-primary {
   background: #c084fc;
   color: #1a2238;
+  text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -214,11 +217,16 @@ footer {
     background: rgba(30, 41, 59, 0.9);
     backdrop-filter: blur(10px);
     border-radius: 24px;
-    padding: 40px;
-    width: 100%;
-    max-width: 420px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
 }
 
 .title {
@@ -444,6 +452,527 @@ footer {
     }
 }
 
-/* Estilo registro */
+/* ========== ESTILOS PARA FORMULARIOS DE REGISTRO ========== */
+
+/* Contenedor específico para páginas de registro */
+body:has([action*="registro-usuario.php"]) .container,
+body:has([action*="registro-compañia.php"]) .container,
+.registro-container {
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Header del registro */
+.header, .registrarse_header {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.header h1, .registrarse_header h1 {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #a855f7, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Botones de tipo de usuario */
+.user-type {
+    display: flex;
+    gap: 0;
+    background: rgba(51, 65, 85, 0.6);
+    border-radius: 12px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.user-type-btn {
+    flex: 1;
+    padding: 12px 24px;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.user-type-btn.active {
+    background: linear-gradient(135deg, #a855f7, #c084fc);
+    color: white;
+    box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+}
+
+.user-type-btn:hover:not(.active) {
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Formulario principal */
+.registro-form,
+form[action*="registro-usuario.php"],
+form[action*="registro-compañia.php"] {
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 24px;
+}
+
+/* Filas del formulario */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #e2e8f0;
+}
+
+/* Inputs del formulario */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(51, 65, 85, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #a855f7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+    background: rgba(51, 65, 85, 0.8);
+}
+
+.form-group input::placeholder {
+    color: #94a3b8;
+}
+
+/* Selects específicos */
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: #334155;
+    color: white;
+    padding: 8px;
+}
+
+/* Grupo de checkboxes */
+.checkbox-group {
+    border: none;
+    margin-bottom: 32px;
+    padding: 0;
+}
+
+.checkbox-group legend {
+    display: none;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-item label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+    margin-bottom: 0;
+    color: #e2e8f0;
+}
+
+.checkbox-item label::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    background: rgba(51, 65, 85, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.checkbox-item input[type="checkbox"]:checked + label::before {
+    background: #a855f7;
+    border-color: #a855f7;
+}
+
+.checkbox-item input[type="checkbox"]:checked + label::after {
+    content: '✓';
+    position: absolute;
+    margin-left: -14px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Botón de envío */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #a855f7, #c084fc);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+    margin-bottom: 0;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Link de login */
+.login-link {
+    text-align: center;
+    margin-bottom: 24px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.login-link span {
+    color: #94a3b8;
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+.login-link a {
+    color: #c084fc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    color: #a855f7;
+    text-decoration: underline;
+}
+
+/* Login social */
+.social-login {
+    text-align: center;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.social-login p {
+    color: #94a3b8;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 12px 16px;
+    background: rgba(51, 65, 85, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.social-btn:hover {
+    background: rgba(51, 65, 85, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body:has([action*="registro-usuario.php"]) .container,
+    body:has([action*="registro-compañia.php"]) .container,
+    .registro-container {
+        padding: 1rem;
+    }
+
+    .registro-form {
+        padding: 24px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 24px;
+    }
+
+    .user-type {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .user-type-btn {
+        padding: 16px 24px;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    body:has([action*="registro-usuario.php"]) .container,
+    body:has([action*="registro-compañia.php"]) .container,
+    .registro-container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .header h1, .registrarse_header h1 {
+        font-size: 28px;
+    }
+
+    .registro-form {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .login-link,
+    .social-login {
+        padding: 16px;
+        border-radius: 12px;
+    }
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body:has([action*="registro-usuario.php"]) .container,
+body:has([action*="registro-compañia.php"]) .container,
+.registro-container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Estados de validación */
+.form-group input.error,
+.form-group select.error {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-group input.success,
+.form-group select.success {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* ---------  POSTULAR TRABAJOS  -----------  */
+
+/* --------- intro post-trab ---------- */
+
+._post {
+  padding: 5rem 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_post {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "cont_img_post frase_empleador";
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; /* Añade espacio entre las columnas */
+    max-width: 1200px; /* Opcional: limita el ancho máximo */
+    width: 100%;
+}
+
+.cont_img_post {
+    grid-area: cont_img_post;
+}
+
+.frase_empleador {
+    grid-area: frase_empleador;
+}
+
+.frase_empleador h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.frase_empleador h1 span {
+  color: #c084fc;
+}
+
+.frase_empleador h1 .primer{
+  color: #c084fc;
+}
+
+.frase_empleador h1 .paso{
+  color: #d946ef;
+}
+
+.post_img {
+  max-width: 350px;
+  width: 90%;
+  border-radius: 10px;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .container_post {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "cont_img_post"
+            "frase_empleador";
+        text-align: center;
+    }
+}
+
+/* ======== Pasos para postulaciones ========= */
+
+.paso_postular {
+  background: #202840;
+  padding: 3rem 0;
+}
+
+.contenedor_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;  
+  gap: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card_post{
+  flex: 1;
+  min-width: 250px;
+  background: #2c3350;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+
+.numeros {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background-color: #8046d4;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  justify-content: center;
+  align-items: center;
+}
+
+.crear_cuenta {
+  background: #c084fc;
+  color: #1a2238;
+  text-decoration: none;
+}
+
+.set_postulacion{
+  background: #c084fc;
+  color: #1a2238;
+  text-decoration: none;
+}
+
+.card_post .btn {
+  margin-top: 1rem; /* Esto separará el botón del texto de arriba */
+  display: inline-block; /* Asegura que el margen funcione correctamente */
+}
+
 
 
