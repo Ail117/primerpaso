@@ -17,6 +17,9 @@ switch ($page) {
   case 'post-trab':
     include 'views/post-trab.php';
     break;
+  case 'oportinidades':
+    include 'views/oportunidades.php';
+    break;
   // agrega más páginas aquí...
   default:
     include 'views/404.php';

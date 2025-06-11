@@ -973,3 +973,585 @@ body:has([action*="registro-compañia.php"]) .container,
   margin-top: 1rem; /* Esto separará el botón del texto de arriba */
   display: inline-block; /* Asegura que el margen funcione correctamente */
 }
+
+/* ========== ESTILOS PARA PÁGINA DE OPORTUNIDADES ========== */
+
+/* Hero Section */
+.oportunidades-hero {
+  padding: 3rem 0;
+  background-color: transparent;
+}
+
+.oportunidades-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.oportunidades-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.oportunidades-header h1 .primer {
+  color: #c084fc;
+}
+
+.oportunidades-subtitle {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Filtros */
+.filtros-container {
+  background: rgba(30, 41, 59, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.filtros-form {
+  width: 100%;
+}
+
+.filtros-principales {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Tabs */
+.tabs-container {
+  display: flex;
+  gap: 0;
+  background: rgba(51, 65, 85, 0.6);
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #a855f7, #c084fc);
+  color: white;
+  box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+}
+
+.tab-btn:hover:not(.active) {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Filtros de búsqueda */
+.search-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-input-container {
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(51, 65, 85, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+  background: rgba(51, 65, 85, 0.8);
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+}
+
+.filter-selects {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  flex: 1;
+  min-width: 150px;
+  padding: 16px 20px;
+  background: rgba(51, 65, 85, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+.filter-select option {
+  background: #334155;
+  color: white;
+  padding: 8px;
+}
+
+/* Checkboxes */
+.work-type-checkboxes {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #e2e8f0;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: rgba(51, 65, 85, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+  background: #a855f7;
+  border-color: #a855f7;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.search-btn {
+  align-self: flex-start;
+  min-width: 120px;
+}
+
+/* Sección de vacantes */
+.vacantes-section {
+  padding: 4rem 0;
+  background: #202840;
+}
+
+.vacantes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Tarjeta de vacante */
+.vacante-card {
+  background: #2c3350;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.vacante-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+.vacante-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.empresa-logo {
+  flex-shrink: 0;
+}
+
+.empresa-logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.logo-placeholder {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #a855f7, #c084fc);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+}
+
+.vacante-info {
+  flex: 1;
+}
+
+.vacante-titulo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.vacante-empresa {
+  color: #c084fc;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.vacante-ubicacion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.ubicacion-icon {
+  font-size: 0.8rem;
+}
+
+.vacante-tipo {
+  flex-shrink: 0;
+}
+
+.tipo-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tipo-badge.remoto {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.tipo-badge.tiempo-completo {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.tipo-badge.medio-tiempo {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.tipo-badge.practicas {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.vacante-body {
+  margin-bottom: 1.5rem;
+}
+
+.vacante-descripcion {
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.vacante-requisitos {
+  margin-bottom: 1rem;
+}
+
+.vacante-requisitos h4 {
+  font-size: 0.9rem;
+  color: #c084fc;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.vacante-requisitos ul {
+  list-style: none;
+  padding: 0;
+}
+
+.vacante-requisitos li {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.vacante-requisitos li::before {
+  content: '•';
+  color: #c084fc;
+  position: absolute;
+  left: 0;
+}
+
+.vacante-beneficios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.beneficio-item {
+  background: rgba(192, 132, 252, 0.1);
+  color: #c084fc;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+.vacante-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vacante-fecha {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+.vacante-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+/* Estado sin vacantes */
+.no-vacantes {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #2c3350;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.no-vacantes-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.no-vacantes h3 {
+  color: #c084fc;
+  margin-bottom: 1rem;
+}
+
+.no-vacantes p {
+  color: #94a3b8;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Paginación */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(51, 65, 85, 0.6);
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.page-btn:hover {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+}
+
+.page-btn.active {
+  background: #a855f7;
+  color: white;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #2c3350;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  color: #94a3b8;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #c084fc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .oportunidades-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .tabs-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .tab-btn {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .filter-selects {
+    flex-direction: column;
+  }
+  
+  .work-type-checkboxes {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .vacantes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .vacante-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .vacante-footer {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .vacante-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .vacante-actions .btn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .filtros-container {
+    padding: 1rem;
+  }
+  
+  .vacante-card {
+    padding: 1rem;
+  }
+  
+  .modal-content {
+    margin: 10% auto;
+    padding: 1.5rem;
+    width: 95%;
+  }
+}
