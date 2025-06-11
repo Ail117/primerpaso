@@ -973,6 +973,3 @@ body:has([action*="registro-compañia.php"]) .container,
   margin-top: 1rem; /* Esto separará el botón del texto de arriba */
   display: inline-block; /* Asegura que el margen funcione correctamente */
 }
-
-
-

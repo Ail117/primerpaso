@@ -18,13 +18,13 @@
                 <div class="numeros"><p><span>1</span></p></div>
                 <h3>Crea tu cuenta</h3>
                 <p>Registra tu empresa ahora, es muy sencillo.</p>
-                <button class="btn crear_cuenta" href="?page=registro-compañia">Crear cuenta</button>
+                <a class="btn crear_cuenta" href="?page=registro-compañia">Crear cuenta</a>
             </div>
             <div class="card_post">
                 <div class="numeros"><p><span>2</span></p></div>
                 <h3>Pública tus vacantes</h3>
                 <p>Sube la vacante con las caracteristicas que necesitan tus trabajadores.</p>
-                <a class="btn set_postulacion" href="?page=registro-usuario">Publicar vacante</a>
+                <button class="btn set_postulacion" >Publicar vacante</button>
             </div>
             <div class="card_post">
                 <div class="numeros"><p><span>3</span></p></div>

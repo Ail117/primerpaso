@@ -1,30 +1,5 @@
 <?php
-// login.php
-session_start();
 
-// Procesar el formulario si se envía
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $password = $_POST['password'] ?? '';
-    $remember = isset($_POST['remember']) ? true : false;
-    
-    // Aquí agregarías tu lógica de autenticación
-    // Por ejemplo, verificar contra base de datos
-    
-    if (validateLogin($email, $password)) {
-        $_SESSION['user_email'] = $email;
-        
-        if ($remember) {
-            // Establecer cookie para recordar usuario
-            setcookie('remember_user', $email, time() + (86400 * 30), "/"); // 30 días
-        }
-        
-        header('Location: dashboard.php');
-        exit;
-    } else {
-        $error_message = "Credenciales incorrectas";
-    }
-}
 
 function validateLogin($email, $password) {
     // Aquí implementarías la validación real contra tu base de datos
@@ -35,7 +10,7 @@ function validateLogin($email, $password) {
 
 <?php include 'includes/header.php' ; ?>
 
-<body>
+
     <div class="login-container">
         <h1 class="title">Iniciar Sesión</h1>
         
@@ -97,10 +72,10 @@ function validateLogin($email, $password) {
         </div>
         
         <div class="register-link">
-            ¿No tienes una cuenta? <a href="register.php">Regístrate aquí</a>
+            ¿No tienes una cuenta? <a href="?page=registro-usuario">Regístrate aquí</a>
         </div>
     </div>
 
     <script src="script_login.js"></script>
-</body>
+
 <?php include 'includes/footer.php' ; ?>
