@@ -26,7 +26,7 @@ if (isset($_POST['registrar_empresa'])) {
         $ciudad = trim($_POST['ciudad']);
         $trabajadores = trim($_POST['numero_trabajadores']);
         
-        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        
 
         $consulta_verificar = "SELECT id FROM empresas WHERE email = ?";
         
@@ -50,7 +50,7 @@ if (isset($_POST['registrar_empresa'])) {
 
         // CORREGIDO: usar mysqli_query, no mysqli_connect
         $consulta = "INSERT INTO empresas (email, nombre_comercial, numero_trabajadores, telefono, pais, ciudad, contraseña) 
-                     VALUES ('$email', '$nombre', '$trabajadores', '$telefono', '$pais', '$ciudad', '$password_hash')";
+                     VALUES ('$email', '$nombre', '$trabajadores', '$telefono', '$pais', '$ciudad', '$password')";
         
         $resultado = mysqli_query($conection, $consulta);
 

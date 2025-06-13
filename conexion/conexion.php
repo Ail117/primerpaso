@@ -22,7 +22,7 @@ if (isset($_POST['registrar'])) {
         $nombre = trim($_POST['nombres']);
         $apellidos = trim($_POST['apellidos']);
         $email = trim(strtolower($_POST['email']));
-        $password = trim($_POST['password']);
+        $password = $_POST['password'];
         $telefono = trim($_POST['telefono']);
         $profesion = trim($_POST['profesion']);
 

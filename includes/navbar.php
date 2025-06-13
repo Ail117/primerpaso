@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <header>
   <div class="container">
     <nav class="navbar">
@@ -7,7 +9,13 @@
       </div>
       <div class="nav-links">
         <a href="?page=home" class="active">Inicio</a>
-        <a href="?page=oportunidades">Oportunidades</a>
+        <?php if (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] === 'usuario'): ?> 
+          <a href="?page=oportunidades">Oportunidades</a>
+        <?php elseif (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] !== 'usuario'): ?>
+          <a href="?page=mis_postulaciones">Mis postulaciones</a>
+        <?php else: ?>
+          <a href="?page=oportunidades">Oportunidades</a> 
+        <?php endif; ?>
         <a href="?page=recursos">Recursos</a>
         <a href="?page=post-trab">Para Empresas</a>
         <a href="?page=sobre-nosotros">Sobre Nosotros</a>
@@ -15,8 +23,13 @@
         <a href="?page=contacto">Contacto</a>
       </div>
       <div class="nav-buttons">
-        <a href="?page=login"><button class="btn btn-outline">Iniciar Sesión</button></a>
-        <a href="?page=registro-usuario"><button class="btn btn-primary">Registrarse</button></a>
+        <?php if (isset($_SESSION['usuario_id'])): ?>
+          <span style="margin-right: 10px;">👤 <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></span>
+          <a href="?page=logout"><button class="btn btn-outline">Cerrar Sesión</button></a>
+        <?php else: ?>
+          <a href="?page=login"><button class="btn btn-outline">Iniciar Sesión</button></a>
+          <a href="?page=registro-usuario"><button class="btn btn-primary">Registrarse</button></a>
+        <?php endif; ?>
       </div>
     </nav>
   </div>

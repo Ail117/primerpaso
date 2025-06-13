@@ -24,12 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['iniciar_sesion'])) {
 
     if ($usuario = mysqli_fetch_assoc($resultado1)) {
         // Verificar contraseña con password_verify (si la tienes hasheada)
-        if (password_verify($contraseña, $usuario['contraseña'])) {
+        if ($contraseña === $usuario['contraseña']) {
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nombre'] = $usuario['nombre'];
             $_SESSION['tipo_cuenta'] = 'usuario';
 
-            header("Location: ?page=recursos");
+            header("Location: /primerpaso/index.php?page=recursos");
             exit;
         } else {
             echo "Contraseña incorrecta.";
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['iniciar_sesion'])) {
             $_SESSION['usuario_id'] = $empresa['id'];
             $_SESSION['usuario_nombre'] = $empresa['nombre_comercial'];
             $_SESSION['tipo_cuenta'] = 'empresa';
-            echo "Hola";
+            
             header("Location: /primerpaso/index.php?page=post-trab");
 
             exit;
