@@ -20,6 +20,9 @@ switch ($page) {
   case 'oportinidades':
     include 'views/oportunidades.php';
     break;
+  case 'formulario_post':
+    include 'views/formulario_post.php';
+    break;
   // agrega más páginas aquí...
   default:
     include 'views/404.php';

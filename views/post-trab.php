@@ -24,7 +24,7 @@
                 <div class="numeros"><p><span>2</span></p></div>
                 <h3>Pública tus vacantes</h3>
                 <p>Sube la vacante con las caracteristicas que necesitan tus trabajadores.</p>
-                <button class="btn set_postulacion" >Publicar vacante</button>
+                <a class="btn crear_cuenta" href="?page=formulario_post">Publicar vacante</a>
             </div>
             <div class="card_post">
                 <div class="numeros"><p><span>3</span></p></div>

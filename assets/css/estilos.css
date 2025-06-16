@@ -1555,3 +1555,139 @@ body:has([action*="registro-compañia.php"]) .container,
     width: 95%;
   }
 }
+
+/* Estilos para el formulario de publicar vacante */
+.job-post-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    color: #8b5cf6;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #374151;
+    border-radius: 0.5rem;
+    background-color: #4b5563;
+    color: white;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.form-group textarea::placeholder {
+    color: #9ca3af;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #374151;
+    border-radius: 0.5rem;
+    background-color: #4b5563;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.form-group select option {
+    background-color: #4b5563;
+    color: white;
+}
+
+.checkbox-salary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.checkbox-salary input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    accent-color: #8b5cf6;
+}
+
+.checkbox-salary label {
+    margin: 0;
+    color: #8b5cf6;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.btn-secondary, .btn-primary {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.btn-secondary {
+    background-color: #6b7280;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #4b5563;
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #7c3aed, #9333ea);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-actions {
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+    
+    .btn-secondary, .btn-primary {
+        width: 100%;
+    }
+    
+    .checkbox-salary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}

@@ -1,8 +1,10 @@
 <?php 
+
 include 'includes/header.php';
-include 'conexion/conexion.php';
+//include 'conexion/conexion.php';
 
 // Obtener filtros
+/*
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
 $ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
 $tipo_trabajo = isset($_GET['tipo_trabajo']) ? $_GET['tipo_trabajo'] : '';
@@ -48,6 +50,7 @@ $vacantes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Obtener categorías únicas para el filtro
 $categorias_stmt = $conexion->query("SELECT DISTINCT categoria FROM vacantes WHERE categoria IS NOT NULL ORDER BY categoria");
 $categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
+*/
 ?>
 
 <section class="oportunidades-hero">
