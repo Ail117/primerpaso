@@ -20,17 +20,17 @@ function validateLogin($email, $password) {
             </div>
         <?php endif; ?>
         
-        <form method="POST" action="conexion/conexion_login.php">
+        <form method="POST" action="conexion/conexion_login.php" style="width: 100%;">
             <div class="form-group">
                 <label class="form-label" for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" class="form-input" 
+                <input type="email" id="email" name="email" class="form-input" style="width: 80%;"
                        value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" 
                        required>
             </div>
             
             <div class="form-group">
                 <label class="form-label" for="password">Contraseña</label>
-                <input type="password" id="password" name="password" class="form-input" required>
+                <input type="password" id="password" name="password" class="form-input" required style="width: 80%;">
             </div>
             
             <div class="forgot-password">

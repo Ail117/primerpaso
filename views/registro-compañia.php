@@ -7,8 +7,8 @@
         <header class="header">
             <h1>Registrarse</h1>
                 <div class="user-type">
-                    <button type="button" class="user-type-btn active" onclick="toggleUserType('empleado')">Busco empleo</button>
-                    <button type="button" class="user-type-btn" onclick="toggleUserType('empleador')">Soy empleador</button>
+                    <button type="button" class="user-type-btn" onclick="toggleUserType('empleado')">Busco empleo</button>
+                    <button type="button" class="user-type-btn active" onclick="toggleUserType('empleador')">Soy empleador</button>
                 </div>
         </header>
 
@@ -122,8 +122,13 @@
             if (type === 'empleador') {
                 buttons[1].classList.add('active');
                 // Usar el sistema de parámetros de tu proyecto
+                window.location.href = '?page=registro-compañia';
+            } else if (type === 'empleado') {
+                buttons[0].classList.add('active');
+                // Usar el sistema de parámetros de tu proyecto
                 window.location.href = '?page=registro-usuario';
-            } else {
+            } 
+            else {
                 buttons[0].classList.add('active');
             }
         }

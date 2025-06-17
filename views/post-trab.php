@@ -1,5 +1,6 @@
 <?php include "includes/header.php"; ?>
 
+
 <section class = "_post">
     <div class="container_post" >
         <div class ="cont_img_post">
@@ -18,13 +19,20 @@
                 <div class="numeros"><p><span>1</span></p></div>
                 <h3>Crea tu cuenta</h3>
                 <p>Registra tu empresa ahora, es muy sencillo.</p>
-                <a class="btn crear_cuenta" href="?page=registro-compañia">Crear cuenta</a>
+                <?php if (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] === 'empresa'): ?>    
+                <?php else: ?>    
+                    <a class="btn crear_cuenta" href="?page=registro-compañia">Crear cuenta</a>
+                <?php endif; ?>
             </div>
             <div class="card_post">
                 <div class="numeros"><p><span>2</span></p></div>
                 <h3>Pública tus vacantes</h3>
                 <p>Sube la vacante con las caracteristicas que necesitan tus trabajadores.</p>
-                <a class="btn crear_cuenta" href="?page=formulario_post">Publicar vacante</a>
+                <?php if (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] === 'empresa'): ?>    
+                    <a class="btn crear_cuenta" href="?page=formulario_post">Publicar vacante</a>
+                <?php else: ?>
+                    <a class="btn crear_cuenta" href="?page=registro-compañia">Publicar vacante</a>
+                <?php endif; ?>
             </div>
             <div class="card_post">
                 <div class="numeros"><p><span>3</span></p></div>

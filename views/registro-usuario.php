@@ -86,11 +86,15 @@
             const buttons = document.querySelectorAll('.user-type-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            if (type === 'empleador') {
+            if (type === 'empleado') {
                 buttons[1].classList.add('active');
                 // Usar el sistema de parámetros de tu proyecto
+                window.location.href = '?page=registro-usuario';
+            } else if (type === 'empleador') {
+                buttons[0].classList.add('active');
+                // Usar el sistema de parámetros de tu proyecto
                 window.location.href = '?page=registro-compañia';
-            } else {
+            }else {
                 buttons[0].classList.add('active');
             }
         }
