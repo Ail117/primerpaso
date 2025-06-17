@@ -10,9 +10,9 @@
       <div class="nav-links">
         <a href="?page=home" class="active">Inicio</a>
         <?php if (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] === 'usuario'): ?> 
-          <a href="?page=oportunidades">Oportunidades</a>
+          <a href="?page=trabajos">Oportunidades</a>
         <?php elseif (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] !== 'usuario'): ?>
-          <a href="?page=mis_postulaciones">Mis postulaciones</a>
+          <a href="?page=mis_vacantes">Mis vacantes</a>
         <?php else: ?>
           <a href="?page=oportunidades">Oportunidades</a> 
         <?php endif; ?>

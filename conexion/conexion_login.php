@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['iniciar_sesion'])) {
             header("Location: /primerpaso/index.php?page=recursos");
             exit;
         } else {
-            echo "Contraseña incorrecta.";
+            echo "Contraseña incorrecta.";  
             exit;
         }
     }

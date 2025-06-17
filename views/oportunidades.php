@@ -4,13 +4,13 @@ include 'includes/header.php';
 //include 'conexion/conexion.php';
 
 // Obtener filtros
-/*
+
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
 $ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
 $tipo_trabajo = isset($_GET['tipo_trabajo']) ? $_GET['tipo_trabajo'] : '';
 $buscar = isset($_GET['buscar']) ? $_GET['buscar'] : '';
 
-// Construir consulta SQL con filtros
+/* Construir consulta SQL con filtros
 $sql = "SELECT * FROM vacantes WHERE 1=1";
 $params = [];
 
@@ -65,7 +65,7 @@ $categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
       <form method="GET" action="" class="filtros-form">
         <div class="filtros-principales">
           <div class="tabs-container">
-            <button type="button" class="tab-btn active" onclick="filterByType('all')">Todas</button>
+            <button type="button" class="tab-btn active" onclick="filterByType('all')">Todas</button> <!-- el parametro 'all' de donde lo obtiene-->
             <button type="button" class="tab-btn" onclick="filterByType('practicas')">Prácticas Profesionales</button>
             <button type="button" class="tab-btn" onclick="filterByType('becas')">Becas</button>
             <button type="button" class="tab-btn" onclick="filterByType('empleos')">Empleos Sin Experiencia</button>
