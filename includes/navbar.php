@@ -19,7 +19,7 @@
         <a href="?page=recursos">Recursos</a>
         <a href="?page=post-trab">Para Empresas</a>
         <a href="?page=sobre-nosotros">Sobre Nosotros</a>
-        <a href="?page=faq">PFFs</a>
+        <a href="?page=PFFS">PFFs</a>
         <a href="?page=contacto">Contacto</a>
       </div>
       <div class="nav-buttons">
