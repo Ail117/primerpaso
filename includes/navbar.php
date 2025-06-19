@@ -17,13 +17,16 @@
           <a href="?page=oportunidades">Oportunidades</a> 
         <?php endif; ?>
         <a href="?page=recursos">Recursos</a>
-        <a href="?page=post-trab">Para Empresas</a>
+        <?php if (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] === 'usuario'): ?>
+        <?php else: ?>
+          <a href="?page=post-trab">Para Empresas</a>
+        <?php endif; ?>
         <a href="?page=sobre-nosotros">Sobre Nosotros</a>
         <a href="?page=faq">PFFs</a>
         <a href="?page=contacto">Contacto</a>
-      </div>
+      </div>  
       <div class="nav-buttons">
-        <?php if (isset($_SESSION['usuario_id'])): ?>
+        <?php if (isset($_SESSION['usuario_id'])): ?> 
           <span style="margin-right: 10px;">👤 <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></span>
           <a href="?page=logout"><button class="btn btn-outline">Cerrar Sesión</button></a>
         <?php else: ?>

@@ -5,7 +5,7 @@
             <h1>Publica tu vacante</h1>
         </header>
 
-        <form method="POST" action="conexion/conexion.php" id="jobPostForm">
+        <form method="POST" action="conexion/conexion_vacantes.php">
             <div class="job-post-section">
                 <h2 class="section-title">Datos del aviso</h2>
                 
@@ -79,7 +79,7 @@
         function goBack() {
             window.history.back();
         }
-
+        
         document.getElementById('jobPostForm').addEventListener('submit', function(e) {
             e.preventDefault();
 

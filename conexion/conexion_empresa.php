@@ -57,9 +57,16 @@ if (isset($_POST['registrar_empresa'])) {
         
         
         if ($resultado) {
-            echo "<p style='color: green;'>✅ Usuario registrado exitosamente</p>";
+            echo "<script>
+                alert('Registrado exitosamente!');
+                setTimeout(function() {
+                    window.location.href = '/primerpaso/index.php?page=mis_vacantes';
+                }, 1500);
+            </script>";
         } else {
-            echo "<p style='color: red;'>❌ Error al registrar: " . mysqli_error($conection) . "</p>";
+            echo "<script>
+                alert('Error al registrarse: " . mysqli_error($conexion) ."');
+                </script>";
         }
     }
 }

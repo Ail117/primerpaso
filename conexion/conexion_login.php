@@ -25,14 +25,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['iniciar_sesion'])) {
     if ($usuario = mysqli_fetch_assoc($resultado1)) {
         // Verificar contraseña con password_verify (si la tienes hasheada)
         if ($contraseña === $usuario['contraseña']) {
-            $_SESSION['usuario_id'] = $usuario['id'];
+            $_SESSION['usuario_id'] = $usuario['id_u'];
             $_SESSION['usuario_nombre'] = $usuario['nombre'];
             $_SESSION['tipo_cuenta'] = 'usuario';
 
-            header("Location: /primerpaso/index.php?page=recursos");
+            header("Location: /primerpaso/index.php?page=oportunidades");
             exit;
         } else {
-            echo "Contraseña incorrecta.";  
+            echo "<script>
+                alert('Contraseña incorrecta.');
+                window.location.href = '/primerpaso/index.php?page=login';
+                </script>";    
             exit;
         }
     }
@@ -46,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['iniciar_sesion'])) {
 
     if ($empresa = mysqli_fetch_assoc($resultado2)) {
         if ($contraseña === $empresa['contraseña']) {
-            $_SESSION['usuario_id'] = $empresa['id'];
+            $_SESSION['usuario_id'] = $empresa['id_em'];
             $_SESSION['usuario_nombre'] = $empresa['nombre_comercial'];
             $_SESSION['tipo_cuenta'] = 'empresa';
             
@@ -54,9 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['iniciar_sesion'])) {
 
             exit;
         } else {
-            echo "Contraseña incorrecta.";
-            echo $contraseña;
-            echo $empresa['contraseña'];
+            echo "<script>
+                alert('Contraseña incorrecta.');
+                window.location.href = '/primerpaso/index.php?page=login';
+                </script>";            
             exit;
         }
     }
