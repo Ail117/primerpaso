@@ -37,8 +37,7 @@
             <div class="card_post">
                 <div class="numeros"><p><span>3</span></p></div>
                 <h3>Contacata a tus cadidatos</h3>
-                <p>Se identifican candidatos y se les contacta para evaluar su interés.</p>
-                
+                <p>Se identifican candidatos y se les contacta para evaluar su interés.</p>                
             </div>
         </div>
     </div>

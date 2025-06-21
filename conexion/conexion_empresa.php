@@ -28,12 +28,14 @@ if (isset($_POST['registrar_empresa'])) {
         
         
 
-        $consulta_verificar = "SELECT id FROM empresas WHERE email = ?";
+        $consulta_verificar = "SELECT id_em FROM empresas WHERE email = ?";
         
         $stmt_verificar = mysqli_prepare($conection, $consulta_verificar);
 
         if (!$stmt_verificar) {
-            echo "<p style='color: red;'>❌ Error en la preparación de consulta: " . mysqli_error($conection) . "</p>";
+            echo "<script>
+                alert('Error al registrarse: " . mysqli_error($conexion) ."');
+                </script>";
             exit;
         }
 
@@ -42,7 +44,9 @@ if (isset($_POST['registrar_empresa'])) {
         $resultado_verificar = mysqli_stmt_get_result($stmt_verificar);
 
         if (mysqli_num_rows($resultado_verificar) > 0) {
-            echo "<p style='color: red;'>❌ Este email ya está registrado</p>";
+            echo "<script>
+                alert('Este correo ya esta registrado');
+                </script>";
             mysqli_stmt_close($stmt_verificar);
             exit;
         }

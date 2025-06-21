@@ -41,11 +41,11 @@
                         <label for="jornada_laboral">Jornada laboral</label>
                         <select id="jornada_laboral" name="jornada_laboral" required>
                             <option value="">Selecciona jornada</option>
-                            <option value="tiempo_completo">Tiempo completo</option>
-                            <option value="medio_tiempo">Medio tiempo</option>
-                            <option value="por_horas">Por horas</option>
-                            <option value="freelance">Freelance</option>
-                            <option value="practicas">Prácticas</option>
+                            <option value="Tiempo completo">Tiempo completo</option>
+                            <option value="Mediot tiempo">Medio tiempo</option>
+                            <option value="Por horas">Por horas</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Remoto">Remoto</option>
                         </select>
                     </div>
                     <div class="form-group">

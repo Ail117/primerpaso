@@ -13,10 +13,14 @@ if (isset($_POST['registrar'])) {
         empty($_POST['email']) || 
         empty($_POST['password'])) {
         
-        echo "<p style='color: red;'>❌ Por favor completa todos los campos requeridos</p>";
+        echo "<<script>
+                alert('Por favor completa los campos');
+                </script>";
     } 
     elseif ($_POST['password'] !== $_POST['confirmPassword']) {
-        echo "<p style='color: red;'>❌ Las contraseñas no coinciden</p>";
+        echo "<script>
+                alert('Las contraseñas no coinciden');
+                </script>";
     }
     else {
         $nombre = trim($_POST['nombres']);
@@ -26,7 +30,7 @@ if (isset($_POST['registrar'])) {
         $telefono = trim($_POST['telefono']);
         $profesion = trim($_POST['profesion']);
 
-        $consulta_verificar = "SELECT id FROM usuarios WHERE email = ?";
+        $consulta_verificar = "SELECT id_u FROM usuarios WHERE email = ?";
         
         $stmt_verificar = mysqli_prepare($conection, $consulta_verificar);
 
@@ -53,9 +57,16 @@ if (isset($_POST['registrar'])) {
         $resultado = mysqli_query($conection, $consulta);
         
         if ($resultado) {
-            echo "<p style='color: green;'>✅ Usuario registrado exitosamente</p>";
+            echo "<script>
+                alert('Registrado exitosamente!');
+                setTimeout(function() {
+                    window.location.href = '/primerpaso/index.php?page=login';
+                }, 1500);
+            </script>";
         } else {
-            echo "<p style='color: red;'>❌ Error al registrar: " . mysqli_error($conection) . "</p>";
+            echo "<script>
+                alert('Error al registrarse: " . mysqli_error($conexion) ."');
+                </script>";
         }
     }
 }

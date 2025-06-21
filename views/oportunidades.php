@@ -1,56 +1,80 @@
 <?php 
 
 include 'includes/header.php';
-//include 'conexion/conexion.php';
+
 
 // Obtener filtros
+$conexion = new mysqli('localhost', 'root', '', 'primerospasosbd');
+if ($conexion->connect_error) {
+    die('Error de conexión: ' . $conexion->connect_error);
+}
 
-$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
-$ubicacion = isset($_GET['ubicacion']) ? $_GET['ubicacion'] : '';
-$tipo_trabajo = isset($_GET['tipo_trabajo']) ? $_GET['tipo_trabajo'] : '';
-$buscar = isset($_GET['buscar']) ? $_GET['buscar'] : '';
+// Obtener filtros
+$categoria = isset($_POST['categoria']) ? $_POST['categoria'] : '';
+$pais = isset($_POST['pais']) ? $_POST['pais'] : '';
+$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : '';
+$tipo_trabajo = isset($_POST['tipo_trabajo']) ? $_POST['tipo_trabajo'] : '';
+$buscar = isset($_POST['buscar']) ? $_POST['buscar'] : '';
 
-/* Construir consulta SQL con filtros
-$sql = "SELECT * FROM vacantes WHERE 1=1";
+// Construir consulta SQL
+$sql = "SELECT v.* , e.*
+        FROM vacantes v
+        JOIN empresas e ON v.id_em = e.id_em
+        WHERE 1=1";
+$tipos = '';
 $params = [];
 
+// Filtros dinámicos
 if (!empty($categoria)) {
-    $sql .= " AND categoria = ?";
+    $sql .= " AND v.area = ?";
+    $tipos .= 's';
     $params[] = $categoria;
 }
-
-if (!empty($ubicacion)) {
-    $sql .= " AND ubicacion LIKE ?";
-    $params[] = "%$ubicacion%";
+if (!empty($pais)) {
+    $sql .= " AND e.pais = ?";
+    $tipos .= 's';
+    $params[] = $pais;
 }
 
+if (!empty($ciudad)) {
+    $sql .= " AND e.ciudad = ?";
+    $tipos .= 's';
+    $params[] = $ciudad;
+}
 if (!empty($tipo_trabajo)) {
-    $sql .= " AND tipo_trabajo = ?";
-    $params[] = $tipo_trabajo;
+    
+    if (is_array($tipo_trabajo)) {
+        $placeholders = implode(',', array_fill(0, count($tipo_trabajo), '?'));
+        $sql .= " AND v.jornada_laboral IN ($placeholders)";
+        $tipos .= str_repeat('s', count($tipo_trabajo));
+        foreach ($tipo_trabajo as $tt) {
+            $params[] = $tt;
+        }
+    } else {
+        $sql .= " AND v.jornada_laboral = ?";
+        $tipos .= 's';
+        $params[] = $tipo_trabajo;
+    }
 }
-
 if (!empty($buscar)) {
-    $sql .= " AND (titulo LIKE ? OR empresa LIKE ? OR descripcion LIKE ?)";
-    $params[] = "%$buscar%";
+    $sql .= " AND (v.titulo LIKE ? OR v.descripcion LIKE ?)";
+    $tipos .= 'ss';
     $params[] = "%$buscar%";
     $params[] = "%$buscar%";
 }
 
-$sql .= " ORDER BY fecha_creacion DESC";
-
-// Ejecutar consulta
 $stmt = $conexion->prepare($sql);
-if (!empty($params)) {
-    $stmt->execute($params);
-} else {
-    $stmt->execute();
+if ($params) {
+    $stmt->bind_param($tipos, ...$params);
 }
-$vacantes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->execute();
+$resultado = $stmt->get_result();
+$vacantes = $resultado->fetch_all(MYSQLI_ASSOC);
 
 // Obtener categorías únicas para el filtro
-$categorias_stmt = $conexion->query("SELECT DISTINCT categoria FROM vacantes WHERE categoria IS NOT NULL ORDER BY categoria");
-$categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
-*/
+//$categorias_stmt = $conexion->query("SELECT DISTINCT categoria FROM vacantes WHERE categoria IS NOT NULL ORDER BY categoria");
+//$categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
+
 ?>
 
 <section class="oportunidades-hero">
@@ -62,14 +86,9 @@ $categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
     
     <!-- Filtros de búsqueda -->
     <div class="filtros-container">
-      <form method="GET" action="" class="filtros-form">
+      <form method="POST" action="" class="filtros-form">
         <div class="filtros-principales">
-          <div class="tabs-container">
-            <button type="button" class="tab-btn active" onclick="filterByType('all')">Todas</button> <!-- el parametro 'all' de donde lo obtiene-->
-            <button type="button" class="tab-btn" onclick="filterByType('practicas')">Prácticas Profesionales</button>
-            <button type="button" class="tab-btn" onclick="filterByType('becas')">Becas</button>
-            <button type="button" class="tab-btn" onclick="filterByType('empleos')">Empleos Sin Experiencia</button>
-          </div>
+         
           
           <div class="search-filters">
             <div class="search-input-container">
@@ -79,39 +98,58 @@ $categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
             
             <div class="filter-selects">
               <select name="categoria" class="filter-select">
-                <option value="">Categoría</option>
-                <?php foreach($categorias as $cat): ?>
-                  <option value="<?php echo htmlspecialchars($cat); ?>" 
-                          <?php echo $categoria == $cat ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($cat); ?>
-                  </option>
-                <?php endforeach; ?>
+                <option value="">Categorías</option>                
+                <option value="tecnologia">Tecnología</option>
+                <option value="marketing">Marketing</option>
+                <option value="ventas">Ventas</option>
+                <option value="recursos_humanos">Recursos Humanos</option>
+                <option value="finanzas">Finanzas</option>
+                <option value="administracion">Administración</option>
+                <option value="diseño">Diseño</option>
+                <option value="atencion_cliente">Atención al Cliente</option>
+                <option value="otros">Otros</option>
+                
               </select>
               
-              <select name="ubicacion" class="filter-select">
-                <option value="">Ubicación</option>
-                <option value="remoto" <?php echo $ubicacion == 'remoto' ? 'selected' : ''; ?>>Remoto</option>
-                <option value="presencial" <?php echo $ubicacion == 'presencial' ? 'selected' : ''; ?>>Presencial</option>
-                <option value="hibrido" <?php echo $ubicacion == 'hibrido' ? 'selected' : ''; ?>>Híbrido</option>
+              <select id="pais" name="pais" class="filter-select"  onchange="updateCities()">
+                <option value="">Seleccionar país...</option>
+                        <option value="Mexico">México</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                        <option value="Canada">Canadá</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Peru">Perú</option>
+                        <option value="España">España</option>
+              </select>
+              <select id="ciudad" name="ciudad" class="filter-select" >
+                        <option value="">Seleccionar ciudad...</option>
+                        <option value="Guadalajara">Guadalajara</option>
+                        <option value="Ciudad de México">Ciudad de México</option>
+                        <option value="Monterrey">Monterrey</option>
+                        <option value="Puebla">Puebla</option>
+                        <option value="Tijuana">Tijuana</option>
+                        <option value="León">León</option>
+                        <option value="Cancún">Cancún</option>
               </select>
             </div>
             
             <div class="work-type-checkboxes">
               <label class="checkbox-label">
-                <input type="checkbox" name="tipo_trabajo[]" value="remoto" 
-                       <?php echo strpos($tipo_trabajo, 'remoto') !== false ? 'checked' : ''; ?>>
+                <input type="checkbox" name="tipo_trabajo[]" value="Remoto" 
+                       <?php echo (is_array($tipo_trabajo) && in_array('Remoto', $tipo_trabajo)) ? 'checked' : ''; ?>>
                 <span class="checkbox-custom"></span>
                 Remoto
               </label>
               <label class="checkbox-label">
-                <input type="checkbox" name="tipo_trabajo[]" value="tiempo_completo" 
-                       <?php echo strpos($tipo_trabajo, 'tiempo_completo') !== false ? 'checked' : ''; ?>>
+                <input type="checkbox" name="tipo_trabajo[]" value="Tiempo completo" 
+                       <?php echo (is_array($tipo_trabajo) && in_array('Tiempo completo', $tipo_trabajo)) ? 'checked' : ''; ?>>
                 <span class="checkbox-custom"></span>
                 Tiempo completo
               </label>
               <label class="checkbox-label">
-                <input type="checkbox" name="tipo_trabajo[]" value="medio_tiempo" 
-                       <?php echo strpos($tipo_trabajo, 'medio_tiempo') !== false ? 'checked' : ''; ?>>
+                <input type="checkbox" name="tipo_trabajo[]" value="Medio tiempo" 
+                       <?php echo (is_array($tipo_trabajo) && in_array('Medio tiempo', $tipo_trabajo)) ? 'checked' : ''; ?>>
                 <span class="checkbox-custom"></span>
                 Medio tiempo
               </label>
@@ -136,57 +174,44 @@ $categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
         </div>
       <?php else: ?>
         <?php foreach($vacantes as $vacante): ?>
-          <div class="vacante-card" data-category="<?php echo htmlspecialchars($vacante['categoria']); ?>">
+          <div class="vacante-card" data-category="<?php echo htmlspecialchars($vacante['area']); ?>">
             <div class="vacante-header">
               <div class="empresa-logo">
                 <?php if (!empty($vacante['logo_empresa'])): ?>
                   <img src="<?php echo htmlspecialchars($vacante['logo_empresa']); ?>" alt="Logo">
                 <?php else: ?>
-                  <div class="logo-placeholder"><?php echo strtoupper(substr($vacante['empresa'], 0, 2)); ?></div>
+                  <div class="logo-placeholder"><?php echo strtoupper(substr($vacante['nombre_comercial'] ?? '', 0, 2)); ?></div>
                 <?php endif; ?>
               </div>
               <div class="vacante-info">
                 <h3 class="vacante-titulo"><?php echo htmlspecialchars($vacante['titulo']); ?></h3>
-                <p class="vacante-empresa"><?php echo htmlspecialchars($vacante['empresa']); ?></p>
+                <p class="vacante-empresa"><?php echo htmlspecialchars($vacante['nombre_comercial']); ?></p>
                 <div class="vacante-ubicacion">
                   <span class="ubicacion-icon">📍</span>
-                  <?php echo htmlspecialchars($vacante['ubicacion']); ?>
+                  <?php echo htmlspecialchars($vacante['ciudad']); ?>
                 </div>
               </div>
               <div class="vacante-tipo">
-                <span class="tipo-badge <?php echo strtolower(str_replace(' ', '-', $vacante['tipo_trabajo'])); ?>">
-                  <?php echo htmlspecialchars($vacante['tipo_trabajo']); ?>
+                <span class="tipo-badge <?php echo strtolower(str_replace(' ', '-', $vacante['jornada_laboral'])); ?>">
+                  <?php echo htmlspecialchars($vacante['jornada_laboral']); ?>
                 </span>
               </div>
             </div>
             
             <div class="vacante-body">
               <p class="vacante-descripcion">
-                <?php echo htmlspecialchars(substr($vacante['descripcion'], 0, 150)); ?>...
+                <?php echo htmlspecialchars(substr($vacante['descripcion'], 0, 15)); ?>...
               </p>
               
-              <div class="vacante-requisitos">
-                <h4>Requisitos principales:</h4>
-                <ul>
-                  <?php 
-                  $requisitos = explode(',', $vacante['requisitos']);
-                  foreach(array_slice($requisitos, 0, 3) as $requisito): 
-                  ?>
-                    <li><?php echo htmlspecialchars(trim($requisito)); ?></li>
-                  <?php endforeach; ?>
-                </ul>
-              </div>
+              
               
               <div class="vacante-beneficios">
                 <?php if (!empty($vacante['salario'])): ?>
                   <span class="beneficio-item">💰 <?php echo htmlspecialchars($vacante['salario']); ?></span>
                 <?php endif; ?>
-                <?php if ($vacante['tipo_trabajo'] == 'remoto'): ?>
+                <?php if ($vacante['jornada_laboral'] == 'Remoto'): ?>
                   <span class="beneficio-item">🏠 Trabajo remoto</span>
-                <?php endif; ?>
-                <?php if (!empty($vacante['beneficios'])): ?>
-                  <span class="beneficio-item">✨ Beneficios adicionales</span>
-                <?php endif; ?>
+                <?php endif; ?>                
               </div>
             </div>
             
@@ -195,10 +220,10 @@ $categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
                 <span>Publicado: <?php echo date('d M Y', strtotime($vacante['fecha_creacion'])); ?></span>
               </div>
               <div class="vacante-actions">
-                <button class="btn btn-outline btn-sm" onclick="verDetalles(<?php echo $vacante['id']; ?>)">
+                <button class="btn btn-outline btn-sm" onclick="verDetalles(<?php echo $vacante['id_va']; ?>)">
                   Ver detalles
                 </button>
-                <button class="btn btn-primary btn-sm" onclick="postularse(<?php echo $vacante['id']; ?>)">
+                <button class="btn btn-primary btn-sm" onclick="postularse(<?php echo $vacante['id_va']; ?>)">
                   Postularse
                 </button>
               </div>
@@ -232,28 +257,6 @@ $categorias = $categorias_stmt->fetchAll(PDO::FETCH_COLUMN);
 </div>
 
 <script>
-function filterByType(type) {
-  // Actualizar botones activos
-  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-  
-  // Filtrar tarjetas
-  const cards = document.querySelectorAll('.vacante-card');
-  cards.forEach(card => {
-    if (type === 'all') {
-      card.style.display = 'block';
-    } else {
-      const category = card.dataset.category.toLowerCase();
-      if (category.includes(type) || 
-          (type === 'practicas' && category.includes('práctica')) ||
-          (type === 'empleos' && category.includes('empleo'))) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    }
-  });
-}
 
 function verDetalles(id) {
   // Cargar detalles de la vacante via AJAX
@@ -306,6 +309,36 @@ window.onclick = function(event) {
   if (event.target === modal) {
     modal.style.display = 'none';
   }
+}
+
+function updateCities() {
+    const paisSelect = document.getElementById('pais');
+    const ciudadSelect = document.getElementById('ciudad');
+    const selectedCountry = paisSelect.value;
+    
+    // Limpiar opciones actuales
+    ciudadSelect.innerHTML = '<option value="">Seleccionar ciudad...</option>';
+    
+    // Ciudades por país
+    const cities = {
+        'Mexico': ['Guadalajara', 'Ciudad de México', 'Monterrey', 'Puebla', 'Tijuana', 'León', 'Cancún'],
+        'Estados Unidos': ['Nueva York', 'Los Ángeles', 'Chicago', 'Houston', 'Miami', 'San Francisco'],
+        'Canada': ['Toronto', 'Vancouver', 'Montreal', 'Calgary', 'Ottawa'],
+        'Colombia': ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena'],
+        'Argentina': ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'La Plata'],
+        'Chile': ['Santiago', 'Valparaíso', 'Concepción', 'Antofagasta'],
+        'Peru': ['Lima', 'Arequipa', 'Trujillo', 'Chiclayo', 'Cusco'],
+        'España': ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Bilbao']
+    };
+    
+    if (cities[selectedCountry]) {
+        cities[selectedCountry].forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            ciudadSelect.appendChild(option);
+        });
+    }
 }
 </script>
 

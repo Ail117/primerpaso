@@ -27,7 +27,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="nombre_comercial">Nombre comercial de la empresa</label>
-                    <input type="text" id="nombre_comercial" name="nombre_comercial" required>
+                    <input type="text" id="nombre_come  rcial" name="nombre_comercial" required>
                 </div>
                 <div class="form-group">
                     <label for="numero_trabajadores">Número de trabajadores</label>

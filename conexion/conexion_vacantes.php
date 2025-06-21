@@ -23,8 +23,9 @@ if (isset($_POST['publicar_vacante'])){
         $salario = isset($_POST['salario']) ? $_POST['salario'] : null;
         $no_mostrar_salario = isset($_POST['no_mostrar_salario']) ? 1 : 0;
         $empresa_id = $_SESSION['usuario_id'] ?? null;
+        $fecha_publicacion = date('Y-m-d H:i:s');
 
-        $consulta = "INSERT INTO vacantes (titulo, area, descripcion, jornada_laboral, fecha_contratacion, salario, no_mostrar_salario, id_em) VALUES ('$titulo', '$area', '$descripcion', '$jornada', '$fecha', '$salario', '$no_mostrar_salario', '$empresa_id')";
+        $consulta = "INSERT INTO vacantes (titulo, area, descripcion, jornada_laboral, fecha_contratacion, fecha_creacion, salario, no_mostrar_salario, id_em) VALUES ('$titulo', '$area', '$descripcion', '$jornada', '$fecha', '$fecha_publicacion', '$salario', '$no_mostrar_salario', '$empresa_id')";
 
         if (mysqli_query($conexion, $consulta)) {
             // Mostrar mensaje y redirigir con JS después de 2 segundos
