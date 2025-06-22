@@ -99,38 +99,39 @@ $vacantes = $resultado->fetch_all(MYSQLI_ASSOC);
             <div class="filter-selects">
               <select name="categoria" class="filter-select">
                 <option value="">Categorías</option>                
-                <option value="tecnologia">Tecnología</option>
-                <option value="marketing">Marketing</option>
-                <option value="ventas">Ventas</option>
-                <option value="recursos_humanos">Recursos Humanos</option>
-                <option value="finanzas">Finanzas</option>
-                <option value="administracion">Administración</option>
-                <option value="diseño">Diseño</option>
-                <option value="atencion_cliente">Atención al Cliente</option>
-                <option value="otros">Otros</option>
+                <option value="tecnologia" <?php echo ($categoria == 'tecnologia') ? 'selected' : ''; ?>>Tecnología</option>
+                <option value="marketing" <?php echo ($categoria == 'marketing') ? 'selected' : ''; ?>>Marketing</option>
+                <option value="ventas" <?php echo ($categoria == 'ventas') ? 'selected' : ''; ?>>Ventas</option>
+                <option value="recursos_humanos" <?php echo ($categoria == 'recursos_humanos') ? 'selected' : ''; ?>>Recursos Humanos</option>
+                <option value="finanzas" <?php echo ($categoria == 'finanzas') ? 'selected' : ''; ?>>Finanzas</option>
+                <option value="administracion" <?php echo ($categoria == 'administracion') ? 'selected' : ''; ?>>Administración</option>
+                <option value="diseño" <?php echo ($categoria == 'diseño') ? 'selected' : ''; ?>>Diseño</option>
+                <option value="atencion_cliente" <?php echo ($categoria == 'atencion_cliente') ? 'selected' : ''; ?>>Atención al Cliente</option>
+                <option value="otros" <?php echo ($categoria == 'otros') ? 'selected' : ''; ?>>Otros</option>
                 
               </select>
               
-              <select id="pais" name="pais" class="filter-select"  onchange="updateCities()">
+              <select id="pais" name="pais" class="filter-select" onchange="updateCities()">
                 <option value="">Seleccionar país...</option>
-                        <option value="Mexico">México</option>
-                        <option value="Estados Unidos">Estados Unidos</option>
-                        <option value="Canada">Canadá</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Chile">Chile</option>
-                        <option value="Peru">Perú</option>
-                        <option value="España">España</option>
+                <option value="Mexico" <?php echo ($pais == 'Mexico') ? 'selected' : ''; ?>>México</option>
+                <option value="Estados Unidos" <?php echo ($pais == 'Estados Unidos') ? 'selected' : ''; ?>>Estados Unidos</option>
+                <option value="Canada" <?php echo ($pais == 'Canada') ? 'selected' : ''; ?>>Canadá</option>
+                <option value="Colombia" <?php echo ($pais == 'Colombia') ? 'selected' : ''; ?>>Colombia</option>
+                <option value="Argentina" <?php echo ($pais == 'Argentina') ? 'selected' : ''; ?>>Argentina</option>
+                <option value="Chile" <?php echo ($pais == 'Chile') ? 'selected' : ''; ?>>Chile</option>
+                <option value="Peru" <?php echo ($pais == 'Peru') ? 'selected' : ''; ?>>Perú</option>
+                <option value="España" <?php echo ($pais == 'España') ? 'selected' : ''; ?>>España</option>
               </select>
-              <select id="ciudad" name="ciudad" class="filter-select" >
-                        <option value="">Seleccionar ciudad...</option>
-                        <option value="Guadalajara">Guadalajara</option>
-                        <option value="Ciudad de México">Ciudad de México</option>
-                        <option value="Monterrey">Monterrey</option>
-                        <option value="Puebla">Puebla</option>
-                        <option value="Tijuana">Tijuana</option>
-                        <option value="León">León</option>
-                        <option value="Cancún">Cancún</option>
+              
+              <select id="ciudad" name="ciudad" class="filter-select">
+                <option value="">Seleccionar ciudad...</option>
+                <option value="Guadalajara" <?php echo ($ciudad == 'Guadalajara') ? 'selected' : ''; ?>>Guadalajara</option>
+                <option value="Ciudad de México" <?php echo ($ciudad == 'Ciudad de México') ? 'selected' : ''; ?>>Ciudad de México</option>
+                <option value="Monterrey" <?php echo ($ciudad == 'Monterrey') ? 'selected' : ''; ?>>Monterrey</option>
+                <option value="Puebla" <?php echo ($ciudad == 'Puebla') ? 'selected' : ''; ?>>Puebla</option>
+                <option value="Tijuana" <?php echo ($ciudad == 'Tijuana') ? 'selected' : ''; ?>>Tijuana</option>
+                <option value="León" <?php echo ($ciudad == 'León') ? 'selected' : ''; ?>>León</option>
+                <option value="Cancún" <?php echo ($ciudad == 'Cancún') ? 'selected' : ''; ?>>Cancún</option>
               </select>
             </div>
             
@@ -206,7 +207,7 @@ $vacantes = $resultado->fetch_all(MYSQLI_ASSOC);
               
               
               <div class="vacante-beneficios">
-                <?php if (!empty($vacante['salario'])): ?>
+                <?php if (!($vacante['no_mostrar_salario'])): ?>
                   <span class="beneficio-item">💰 <?php echo htmlspecialchars($vacante['salario']); ?></span>
                 <?php endif; ?>
                 <?php if ($vacante['jornada_laboral'] == 'Remoto'): ?>
@@ -311,35 +312,7 @@ window.onclick = function(event) {
   }
 }
 
-function updateCities() {
-    const paisSelect = document.getElementById('pais');
-    const ciudadSelect = document.getElementById('ciudad');
-    const selectedCountry = paisSelect.value;
-    
-    // Limpiar opciones actuales
-    ciudadSelect.innerHTML = '<option value="">Seleccionar ciudad...</option>';
-    
-    // Ciudades por país
-    const cities = {
-        'Mexico': ['Guadalajara', 'Ciudad de México', 'Monterrey', 'Puebla', 'Tijuana', 'León', 'Cancún'],
-        'Estados Unidos': ['Nueva York', 'Los Ángeles', 'Chicago', 'Houston', 'Miami', 'San Francisco'],
-        'Canada': ['Toronto', 'Vancouver', 'Montreal', 'Calgary', 'Ottawa'],
-        'Colombia': ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena'],
-        'Argentina': ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza', 'La Plata'],
-        'Chile': ['Santiago', 'Valparaíso', 'Concepción', 'Antofagasta'],
-        'Peru': ['Lima', 'Arequipa', 'Trujillo', 'Chiclayo', 'Cusco'],
-        'España': ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Bilbao']
-    };
-    
-    if (cities[selectedCountry]) {
-        cities[selectedCountry].forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            ciudadSelect.appendChild(option);
-        });
-    }
-}
+
 </script>
 
 <?php include 'includes/footer.php'; ?>

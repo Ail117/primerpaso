@@ -23,6 +23,12 @@ switch ($page) {
   case 'formulario_post':
     include 'views/formulario_post.php';
     break;
+  case 'sobre-nosotros':
+    include 'views/sobre-nosotros.php';
+    break;
+  case 'PFFS':
+    include 'views/PFFS.php';
+    break;
   // agrega más páginas aquí...
   default:
     include 'views/404.php';

@@ -12,17 +12,17 @@
         <?php if (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] === 'usuario'): ?> 
           <a href="?page=oportunidades">Oportunidades</a>
         <?php elseif (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] !== 'usuario'): ?>
-          <a href="?page=mis_vacantes">Mis vacantes</a>
+          <a href="?page=candidatos">Candidatos</a>
         <?php else: ?>
           <a href="?page=oportunidades">Oportunidades</a> 
         <?php endif; ?>
-        <a href="?page=recursos">Recursos</a>
+        
         <?php if (isset($_SESSION['tipo_cuenta']) && $_SESSION['tipo_cuenta'] === 'usuario'): ?>
         <?php else: ?>
           <a href="?page=post-trab">Para Empresas</a>
         <?php endif; ?>
         <a href="?page=sobre-nosotros">Sobre Nosotros</a>
-        <a href="?page=faq">PFFs</a>
+        <a href="?page=PFFS">PFFs</a>
         <a href="?page=contacto">Contacto</a>
       </div>  
       <div class="nav-buttons">

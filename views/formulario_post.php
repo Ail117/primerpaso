@@ -42,7 +42,7 @@
                         <select id="jornada_laboral" name="jornada_laboral" required>
                             <option value="">Selecciona jornada</option>
                             <option value="Tiempo completo">Tiempo completo</option>
-                            <option value="Mediot tiempo">Medio tiempo</option>
+                            <option value="Medio tiempo">Medio tiempo</option>
                             <option value="Por horas">Por horas</option>
                             <option value="Freelance">Freelance</option>
                             <option value="Remoto">Remoto</option>

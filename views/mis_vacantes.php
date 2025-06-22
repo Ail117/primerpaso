@@ -1,1 +1,0 @@
-<h2>Mis vacantes</h2>
