@@ -35,6 +35,9 @@ switch ($page) {
   case 'tutorial':
     include 'views/tutorial.php';
     break;
+  case 'perfil':
+    include 'views/perfil.php';
+    break;
   // agrega más páginas aquí...
   default:
     include 'views/404.php';
