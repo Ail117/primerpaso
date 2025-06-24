@@ -29,6 +29,12 @@ switch ($page) {
   case 'PFFS':
     include 'views/PFFS.php';
     break;
+  case 'contacto':
+    include 'views/contacto.php';
+    break;
+  case 'tutorial':
+    include 'views/tutorial.php';
+    break;
   // agrega más páginas aquí...
   default:
     include 'views/404.php';
