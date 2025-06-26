@@ -1,11 +1,11 @@
 <?php include "includes/header.php"; 
-$conexion = new mysqli('localhost', 'root', '', 'primerospasosbd');
+$conexion = new mysqli('localhost', 'root', '', 'primerpaso');
 if ($conexion->connect_error) {
     die('Error de conexión: ' . $conexion->connect_error);
 }
 
 function getCandidatos() {
-    $conexion = new mysqli('localhost', 'root', '', 'primerospasosbd');
+    $conexion = new mysqli('localhost', 'root', '', 'primerpaso');
     
     $candidatos = [];
     if ($conexion->connect_error) {

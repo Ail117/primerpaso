@@ -4,7 +4,7 @@ include 'includes/header.php';
 
 
 // Obtener filtros
-$conexion = new mysqli('localhost', 'root', '', 'primerospasosbd');
+$conexion = new mysqli('localhost', 'root', '', 'primerpaso');
 if ($conexion->connect_error) {
     die('Error de conexión: ' . $conexion->connect_error);
 }

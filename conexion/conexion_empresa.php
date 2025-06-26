@@ -1,6 +1,6 @@
 <?php
 
-$conection = mysqli_connect("localhost", "root", "", "primerospasosbd");
+$conection = mysqli_connect("localhost", "root", "", "primerpaso");
 
 if (!$conection) {
     die("Error de conexión: " . mysqli_connect_error());

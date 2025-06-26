@@ -27,7 +27,10 @@
       </div>  
       <div class="nav-buttons">
         <?php if (isset($_SESSION['usuario_id'])): ?> 
-          <span style="margin-right: 10px;">👤 <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></span>
+          <a href="?page=perfil" class="btn btn-usuario">
+            👤 <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>
+          </a>
+
           <a href="?page=logout"><button class="btn btn-outline">Cerrar Sesión</button></a>
         <?php else: ?>
           <a href="?page=login"><button class="btn btn-outline">Iniciar Sesión</button></a>

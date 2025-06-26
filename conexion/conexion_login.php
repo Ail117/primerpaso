@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$conexion = mysqli_connect("localhost", "root", "", "primerospasosbd");
+$conexion = mysqli_connect("localhost", "root", "", "primerpaso");
 if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
